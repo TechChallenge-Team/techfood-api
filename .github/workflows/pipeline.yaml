@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release src/TechFood.Api/TechFood.Api.csproj
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test TechFood.Api.sln --no-build --verbosity normal
 
   publish:
     runs-on: ubuntu-latest
