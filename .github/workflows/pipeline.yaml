@@ -23,6 +23,12 @@ jobs:
         run: dotnet build --configuration Release src/TechFood.Api/TechFood.Api.csproj
       - name: Test
         run: dotnet test
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ github.repository }}/techfood-api:latest -f src/TechFood.Api/Dockerfile .
+      - name: Login to GitHub Container Registry
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ github.repository }}/techfood-api:latest
 
   publish:
     runs-on: ubuntu-latest
@@ -38,36 +44,3 @@ jobs:
           dotnet-version: "8.0.x"
       - name: Publish (simulado)
         run: echo "Publicação de artefato .NET (ajuste conforme necessário)"
-
-  deploy-STG:
-    runs-on: ubuntu-latest
-    environment:
-      name: stg
-    needs: publish
-    if: github.ref == 'refs/heads/develop'
-    steps:
-      - name: Deploy
-        shell: bash
-        run: echo "Deploy STG .NET (ajuste conforme necessário)"
-
-  deploy-PRE:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/release'
-    environment:
-      name: pre
-    needs: publish
-    steps:
-      - name: Deploy
-        shell: bash
-        run: echo "Deploy PRE .NET (ajuste conforme necessário)"
-
-  deploy-PRD:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    environment:
-      name: prd
-    needs: publish
-    steps:
-      - name: Deploy
-        shell: bash
-        run: echo "Deploy PRD .NET (ajuste conforme necessário)"
