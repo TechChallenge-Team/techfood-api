@@ -42,10 +42,12 @@ jobs:
         run: dotnet restore src/TechFood.Api/TechFood.Api.csproj
       - name: Run tests with coverage
         run: dotnet test src/TechFood.Api/TechFood.Api.csproj --collect:"XPlat Code Coverage"
+      - name: List TestResults files
+        run: ls -R src/TechFood.Api/TestResults
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate coverage report
-        run: reportgenerator -reports:src/TechFood.Api/TestResults/*/coverage.cobertura.xml -targetdir:coverage-report -reporttypes:TextSummary
+        run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coverage-report -reporttypes:TextSummary
       - name: Check coverage threshold
         run: |
           COVERAGE=$(cat coverage-report/Summary.txt | grep 'Line coverage' | awk '{print $3}' | sed 's/%//')
