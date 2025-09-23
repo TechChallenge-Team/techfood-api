@@ -39,15 +39,15 @@ jobs:
         with:
           dotnet-version: "8.0.x"
       - name: Restore dependencies
-        run: dotnet restore src/TechFood.Api/TechFood.Api.csproj
+        run: dotnet restore tests/TechFood.Doman.Tests/TechFood.Doman.Tests.csproj
       - name: Run tests with coverage
-        run: dotnet test src/TechFood.Api/TechFood.Api.csproj --collect:"XPlat Code Coverage"
+        run: dotnet test tests/TechFood.Doman.Tests/TechFood.Doman.Tests.csproj --collect:"XPlat Code Coverage" --results-directory tests/TechFood.Doman.Tests/TestResults
       - name: List TestResults files
-        run: ls -R src/TechFood.Api/TestResults
+        run: ls -R tests/TechFood.Doman.Tests/TestResults
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate coverage report
-        run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coverage-report -reporttypes:TextSummary
+        run: reportgenerator -reports:tests/TechFood.Doman.Tests/TestResults/*/coverage.cobertura.xml -targetdir:coverage-report -reporttypes:TextSummary
       - name: Check coverage threshold
         run: |
           COVERAGE=$(cat coverage-report/Summary.txt | grep 'Line coverage' | awk '{print $3}' | sed 's/%//')
