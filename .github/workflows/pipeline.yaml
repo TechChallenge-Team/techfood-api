@@ -30,6 +30,31 @@ jobs:
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/techfood-api:latest
 
+  test-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+      - name: Restore dependencies
+        run: dotnet restore src/TechFood.Api/TechFood.Api.csproj
+      - name: Run tests with coverage
+        run: dotnet test src/TechFood.Api/TechFood.Api.csproj --collect:"XPlat Code Coverage"
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+      - name: Generate coverage report
+        run: reportgenerator -reports:**/coverage.cobertura.xml -targetdir:coverage-report -reporttypes:TextSummary
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(cat coverage-report/Summary.txt | grep 'Line coverage' | awk '{print $3}' | sed 's/%//')
+          echo "Coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 50" | bc -l) )); then
+            echo "Coverage is below 50%!"
+            exit 1
+          fi
+
   publish:
     runs-on: ubuntu-latest
     needs: build
