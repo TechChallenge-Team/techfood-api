@@ -28,6 +28,8 @@ var app = builder.Build();
         dataContext.Database.Migrate();
     }
 
+    app.UsePathBase("/api");
+
     app.UseForwardedHeaders();
 
     if (!app.Environment.IsDevelopment())
