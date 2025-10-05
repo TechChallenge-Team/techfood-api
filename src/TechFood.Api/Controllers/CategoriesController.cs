@@ -36,7 +36,7 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAsync(CreateCategoryRequest request)
+    public async Task<IActionResult> CreateAsync([FromForm] CreateCategoryRequest request)
     {
         var imageFile = request.File;
         var command = new CreateCategoryCommand(
@@ -50,7 +50,7 @@ public class CategoriesController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut("{id:Guid}")]
-    public async Task<IActionResult> UpdateAsync(Guid id, UpdateCategoryRequest request)
+    public async Task<IActionResult> UpdateAsync(Guid id, [FromForm] UpdateCategoryRequest request)
     {
         var imageFile = request.File;
         var command = new UpdateCategoryCommand(
