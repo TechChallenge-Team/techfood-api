@@ -288,6 +288,46 @@ Then, you can create a new product by doing a post to endpoint `/v1/products`:
 ![Restaurant Order Flow](/docs/admin/finish-preparation.png)
 ![Restaurant Order Flow](/docs/admin/finish-order.png)
 
+# Documentação Banco de Dados
+
+### 1. Modelagem de entidade relacional
+
+![merDB.png](docs/merDB.png)
+
+### 2. Dicionário de Dados TechFood
+
+| Tabela      | Campo      | Tipo          | Observações                                  |
+| ----------- | ---------- | ------------- | -------------------------------------------- |
+| Customer    | Id         | UUID (PK)     | Identificador único                          |
+| Customer    | Name       | VARCHAR(255)  | Nome do cliente                              |
+| Customer    | CPF        | CHAR(11)      | Documento único                              |
+| Order       | Id         | UUID (PK)     | Identificador do pedido                      |
+| Order       | CustomerId | UUID (FK)     | Relaciona com Customer                       |
+| Order       | Amount     | DECIMAL(10,2) | Valor bruto                                  |
+| OrderItem   | Id         | UUID (PK)     | Identificador do item                        |
+| OrderItem   | ProductId  | UUID (FK)     | Relaciona com Product                        |
+| Product     | Id         | UUID (PK)     | Identificador único                          |
+| Product     | Name       | VARCHAR(255)  | Nome do produto                              |
+| Category    | Id         | UUID (PK)     | Identificador da categoria                   |
+| Payment     | Id         | UUID (PK)     | Identificador do pagamento                   |
+| Payment     | Status     | INT           | 0 = pendente, 1 = pago, 2 = falhou           |
+| Preparation | Id         | UUID (PK)     | Identificador da etapa                       |
+| User        | Id         | UUID (PK)     | Identificador do usuário (admin/funcionário) |
+
+## 3. **Justificativa – AWS RDS**
+
+O banco será hospedado no **AWS RDS SQLServer** pelos seguintes motivos:
+
+- **Gerenciamento automático**: backups, atualizações de versão, replicação e failover.
+- **Escalabilidade**: suporte a leitura em réplicas (read replicas).
+- **Segurança**: criptografia em repouso (KMS), em trânsito (TLS), integração com IAM e VPC.
+- **Custo-benefício**: elimina necessidade de administrar infraestrutura, foca no desenvolvimento.
+- **Compatibilidade**: suporte a engines amplamente utilizadas no mercado.
+
+## 4. **Justificativa do Time**
+
+“Optamos pelo **AWS RDS SQLServer** por se tratar de um banco de dados relacional totalmente gerenciado, com suporte a escalabilidade horizontal e vertical, alta disponibilidade via Multi-AZ e segurança integrada com IAM e KMS. Além disso, o **SQLServer** oferece recursos avançados de modelagem (constraints, índices, JSONB para dados semiestruturados) que suportam o crescimento do sistema da Techfood.”
+
 ## Members
 
 - [Elias Soares - RM 362904](https://github.com/eliassoaressouza)
