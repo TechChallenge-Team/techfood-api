@@ -1,12 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using TechFood.Application.Common.Exceptions;
 using TechFood.Application.Common.Resources;
 using TechFood.Application.Common.Services.Interfaces;
 using TechFood.Application.Products.Dto;
 using TechFood.Domain.Entities;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Products.Commands.CreateProduct;
 

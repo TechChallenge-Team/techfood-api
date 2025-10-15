@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using TechFood.Domain.Enums;
 using TechFood.Domain.Events.Order;
-using TechFood.Domain.Common.Entities;
-using TechFood.Domain.Common.Exceptions;
-using TechFood.Domain.Common.Validations;
+using TechFood.Shared.Domain.Entities;
+using TechFood.Shared.Domain.Exceptions;
+using TechFood.Shared.Domain.Validations;
 
 namespace TechFood.Domain.Entities;
 

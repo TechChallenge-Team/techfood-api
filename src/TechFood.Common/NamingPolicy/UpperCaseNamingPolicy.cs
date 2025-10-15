@@ -4,5 +4,5 @@ namespace TechFood.Common.NamingPolicy;
 
 public class UpperCaseNamingPolicy : JsonNamingPolicy
 {
-  public override string ConvertName(string name) => name.ToUpper();
+    public override string ConvertName(string name) => name.ToUpper();
 }

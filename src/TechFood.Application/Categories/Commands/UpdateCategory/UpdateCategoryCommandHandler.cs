@@ -6,6 +6,7 @@ using TechFood.Application.Common.Resources;
 using TechFood.Application.Common.Services.Interfaces;
 using TechFood.Domain.Entities;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Categories.Commands.UpdateCategory;
 
@@ -21,7 +22,7 @@ public class UpdateCategoryCommandHandler(
 
         if (category == null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Category_CategoryNotFound);
+            throw new ApplicationException(Exceptions.Category_CategoryNotFound);
         }
 
         var imageFileName = category.ImageFileName;

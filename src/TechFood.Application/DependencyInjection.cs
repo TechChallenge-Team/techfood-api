@@ -4,7 +4,7 @@ using TechFood.Application.Common.Services.Interfaces;
 
 namespace TechFood.Application;
 
-public static class DependecyInjection
+public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {

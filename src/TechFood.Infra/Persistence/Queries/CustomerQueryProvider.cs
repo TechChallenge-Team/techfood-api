@@ -8,7 +8,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Queries;
 
-internal class CustomerQueryProvider(TechFoodContext techFoodContext) : ICustomerQueryProvider
+internal class CustomerQueryProvider(ApiTechFoodContext techFoodContext) : ICustomerQueryProvider
 {
     public Task<CustomerDto?> GetByDocumentAsync(DocumentType documentType, string document)
     {

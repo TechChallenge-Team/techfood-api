@@ -28,7 +28,7 @@ public partial class ImageUrlResolver : IImageUrlResolver
             string.IsNullOrWhiteSpace(folderName) ||
             string.IsNullOrWhiteSpace(imageFileName))
         {
-            throw new Exceptions.ApplicationException(Resources.Exceptions.ImageUrlResolver_FolderCannotBeNull);
+            throw new ApplicationException(Resources.Exceptions.ImageUrlResolver_FolderCannotBeNull);
         }
 
         var request = _httpContextAccessor.HttpContext!.Request;

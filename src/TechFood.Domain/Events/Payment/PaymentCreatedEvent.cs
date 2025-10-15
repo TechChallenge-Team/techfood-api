@@ -1,6 +1,6 @@
 using System;
 using TechFood.Domain.Enums;
-using TechFood.Domain.Common.Interfaces;
+using TechFood.Shared.Domain.Interfaces;
 
 namespace TechFood.Domain.Events.Payment;
 

@@ -7,7 +7,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Repositories;
 
-internal class OrderRepository(TechFoodContext dbContext) : IOrderRepository
+internal class OrderRepository(ApiTechFoodContext dbContext) : IOrderRepository
 {
     private readonly DbSet<Order> _orders = dbContext.Orders;
 

@@ -9,7 +9,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Repositories;
 
-public class ProductRepository(TechFoodContext dbContext) : IProductRepository
+public class ProductRepository(ApiTechFoodContext dbContext) : IProductRepository
 {
     private readonly DbSet<Product> _products = dbContext.Products;
 

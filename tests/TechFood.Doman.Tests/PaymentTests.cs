@@ -1,6 +1,6 @@
 using TechFood.Domain.Entities;
 using TechFood.Domain.Enums;
-using TechFood.Domain.Common.Exceptions;
+using TechFood.Shared.Domain.Exceptions;
 
 namespace TechFood.Doman.Tests
 {

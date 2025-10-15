@@ -14,7 +14,7 @@ namespace TechFood.Infra.Persistence.Queries;
 
 internal class PreparationQueryProvider(
     IImageUrlResolver imageUrlResolver,
-    TechFoodContext techFoodContext) : IPreparationQueryProvider
+    ApiTechFoodContext techFoodContext) : IPreparationQueryProvider
 {
     public async Task<PreparationDto?> GetByIdAsync(Guid id)
     {

@@ -1,5 +1,5 @@
-using TechFood.Domain.Common.Entities;
-using TechFood.Domain.Common.Validations;
+using TechFood.Shared.Domain.Entities;
+using TechFood.Shared.Domain.Validations;
 
 namespace TechFood.Domain.Entities;
 

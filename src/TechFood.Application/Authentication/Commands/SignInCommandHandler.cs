@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -26,7 +26,7 @@ public class SignInCommandHandler(
         var user = await repo.GetByUsernameOrEmailAsync(request.Username);
         if (user == null)
         {
-            throw new Common.Exceptions.ApplicationException(Common.Resources.Exceptions.Auth_InvalidUseOrPassword);
+            throw new ApplicationException(Common.Resources.Exceptions.Auth_InvalidUseOrPassword);
         }
 
         var validation = new PasswordHasher<User>();
@@ -34,7 +34,7 @@ public class SignInCommandHandler(
 
         if (isValid == PasswordVerificationResult.Failed)
         {
-            throw new Common.Exceptions.ApplicationException(Common.Resources.Exceptions.Auth_InvalidUseOrPassword);
+            throw new ApplicationException(Common.Resources.Exceptions.Auth_InvalidUseOrPassword);
         }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!));

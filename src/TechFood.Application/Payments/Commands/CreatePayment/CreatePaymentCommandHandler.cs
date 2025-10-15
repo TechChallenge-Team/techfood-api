@@ -26,7 +26,7 @@ public class CreatePaymentCommandHandler(
         var order = await orderRepository.GetByIdAsync(request.OrderId);
         if (order == null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Order_OrderNotFound);
+            throw new ApplicationException(Exceptions.Order_OrderNotFound);
         }
 
         var payment = new Payment(request.OrderId, request.Type, order.Amount);

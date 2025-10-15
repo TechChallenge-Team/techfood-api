@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TechFood.Application.Common.Resources;
@@ -6,6 +6,7 @@ using TechFood.Application.Common.Services.Interfaces;
 using TechFood.Application.Products.Dto;
 using TechFood.Domain.Entities;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Products.Commands.SetProductOutOfStock;
 
@@ -16,7 +17,7 @@ public class SetProductOutOfStockCommandHandler(IProductRepository repo, IImageU
         var product = await repo.GetByIdAsync(request.Id);
         if (product is null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Product_ProductNotFound);
+            throw new ApplicationException(Exceptions.Product_ProductNotFound);
         }
 
         product.SetOutOfStock(request.OutOfStock);

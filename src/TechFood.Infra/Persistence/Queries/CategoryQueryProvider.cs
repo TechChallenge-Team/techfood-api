@@ -12,7 +12,7 @@ using TechFood.Infra.Persistence.Contexts;
 namespace TechFood.Infra.Persistence.Queries;
 
 internal class CategoryQueryProvider(
-    TechFoodContext techFoodContext,
+    ApiTechFoodContext techFoodContext,
     IImageUrlResolver imageUrl) : ICategoryQueryProvider
 {
     public async Task<List<CategoryDto>> GetAllAsync()

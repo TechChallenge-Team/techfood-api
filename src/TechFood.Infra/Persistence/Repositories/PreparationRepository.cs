@@ -7,7 +7,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Repositories;
 
-public class PreparationRepository(TechFoodContext dbContext) : IPreparationRepository
+public class PreparationRepository(ApiTechFoodContext dbContext) : IPreparationRepository
 {
     private readonly DbSet<Preparation> _preparations = dbContext.Preparations;
 

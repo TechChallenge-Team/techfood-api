@@ -13,7 +13,7 @@ namespace TechFood.Infra.Persistence.Queries;
 
 internal class OrderQueryProvider(
     IImageUrlResolver imageUrlResolver,
-    TechFoodContext techFoodContext
+    ApiTechFoodContext techFoodContext
         ) : IOrderQueryProvider
 {
     public async Task<List<OrderDto>> GetOrdersAsync()

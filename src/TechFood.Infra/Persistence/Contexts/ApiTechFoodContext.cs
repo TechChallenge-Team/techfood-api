@@ -1,19 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TechFood.Shared.Domain.Entities;
 using TechFood.Domain.Entities;
 using TechFood.Domain.Enums;
-using TechFood.Domain.Common.Entities;
-using TechFood.Domain.Common.Interfaces;
-using TechFood.Domain.UoW;
+using TechFood.Shared.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Contexts;
 
-public class TechFoodContext(DbContextOptions<TechFoodContext> options) : DbContext(options), IUnitOfWork, IDomainEventStore
+public class ApiTechFoodContext(DbContextOptions<ApiTechFoodContext> options) : TechFoodContext(options)
 {
     public DbSet<Category> Categories { get; set; } = null!;
 
@@ -28,27 +26,6 @@ public class TechFoodContext(DbContextOptions<TechFoodContext> options) : DbCont
     public DbSet<User> Users { get; set; } = null!;
 
     public DbSet<Preparation> Preparations { get; set; } = null!;
-
-    public Task<IEnumerable<IDomainEvent>> GetDomainEventsAsync()
-    {
-        // get hold of all the domain events
-        var domainEvents = ChangeTracker.Entries<Entity>()
-            .Select(entry => entry.Entity.PopEvents())
-            .SelectMany(events => events);
-
-        return Task.FromResult(domainEvents);
-    }
-
-    public async Task<bool> CommitAsync()
-    {
-        var success = await SaveChangesAsync() > 0;
-        return success;
-    }
-
-    public Task RollbackAsync()
-    {
-        return Task.CompletedTask;
-    }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
@@ -65,7 +42,7 @@ public class TechFoodContext(DbContextOptions<TechFoodContext> options) : DbCont
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TechFoodContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApiTechFoodContext).Assembly);
 
         var properties = modelBuilder.Model
             .GetEntityTypes()

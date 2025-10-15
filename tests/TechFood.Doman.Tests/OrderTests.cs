@@ -1,5 +1,5 @@
 using TechFood.Domain.Entities;
-using TechFood.Domain.Common.Exceptions;
+using TechFood.Shared.Domain.Exceptions;
 using TechFood.Doman.Tests.Fixtures;
 
 namespace TechFood.Doman.Tests

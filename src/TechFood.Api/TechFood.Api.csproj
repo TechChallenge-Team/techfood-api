@@ -25,11 +25,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="TechFood.Shared.Presentation" Version="0.1.3-test" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TechFood.Application\TechFood.Application.csproj" />
-    <ProjectReference Include="..\TechFood.Common\TechFood.Common.csproj" />
     <ProjectReference Include="..\TechFood.Contracts\TechFood.Contracts.csproj" />
     <ProjectReference Include="..\TechFood.Infra\TechFood.Infra.csproj" />
   </ItemGroup>

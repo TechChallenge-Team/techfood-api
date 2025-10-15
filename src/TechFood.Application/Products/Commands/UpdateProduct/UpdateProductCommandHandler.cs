@@ -6,6 +6,7 @@ using TechFood.Application.Common.Services.Interfaces;
 using TechFood.Application.Products.Dto;
 using TechFood.Domain.Entities;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Products.Commands.UpdateProduct;
 
@@ -21,13 +22,13 @@ public class UpdateProductCommandHandler(
         var product = await productRepository.GetByIdAsync(request.Id);
         if (product is null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Product_ProductNotFound);
+            throw new ApplicationException(Exceptions.Product_ProductNotFound);
         }
 
         var category = await categoryRepository.GetByIdAsync(request.CategoryId);
         if (category is null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Product_CaregoryNotFound);
+            throw new ApplicationException(Exceptions.Product_CaregoryNotFound);
         }
 
         var imageFileName = product.ImageFileName;

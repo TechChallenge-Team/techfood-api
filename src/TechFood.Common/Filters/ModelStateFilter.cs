@@ -5,25 +5,25 @@ namespace TechFood.Common.Filters;
 
 public class ModelStateFilter : ActionFilterAttribute
 {
-  public override void OnActionExecuting(ActionExecutingContext context)
-  {
-    if (!context.ModelState.IsValid)
+    public override void OnActionExecuting(ActionExecutingContext context)
     {
-      var requestId = context.HttpContext.TraceIdentifier;
+        if (!context.ModelState.IsValid)
+        {
+            var requestId = context.HttpContext.TraceIdentifier;
 
-      var errors = context.ModelState
-          .Where(e => e.Value!.Errors.Count > 0)
-          .ToDictionary(
-              kv => kv.Key,
-              kv => kv.Value!.Errors.Select(e => e.ErrorMessage).ToArray()
-          );
+            var errors = context.ModelState
+                .Where(e => e.Value!.Errors.Count > 0)
+                .ToDictionary(
+                    kv => kv.Key,
+                    kv => kv.Value!.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
 
-      context.Result = new BadRequestObjectResult(new
-      {
-        requestId,
-        message = "The request is invalid.",
-        errors
-      });
+            context.Result = new BadRequestObjectResult(new
+            {
+                requestId,
+                message = "The request is invalid.",
+                errors
+            });
+        }
     }
-  }
 }

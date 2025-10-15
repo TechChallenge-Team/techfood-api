@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11010.61 d18.0
+VisualStudioVersion = 18.0.11010.61
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechFood.Api", "src\TechFood.Api\TechFood.Api.csproj", "{8B1BD942-35AA-49B2-B5F2-5D5EF56EDD66}"
 EndProject
@@ -23,8 +23,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechFood.Doman.Tests", "tests\TechFood.Doman.Tests\TechFood.Doman.Tests.csproj", "{FBF40740-BDA6-4E28-AE7C-D791D0F43A50}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechFood.Contracts", "src\TechFood.Contracts\TechFood.Contracts.csproj", "{AA7B4C3A-2008-40F3-B1F0-4EE748436520}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechFood.Common", "src\TechFood.Common\TechFood.Common.csproj", "{C55D4769-CDBA-4062-8366-EB28134888B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -108,18 +106,6 @@ Global
 		{AA7B4C3A-2008-40F3-B1F0-4EE748436520}.Release|x64.Build.0 = Release|Any CPU
 		{AA7B4C3A-2008-40F3-B1F0-4EE748436520}.Release|x86.ActiveCfg = Release|Any CPU
 		{AA7B4C3A-2008-40F3-B1F0-4EE748436520}.Release|x86.Build.0 = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|x64.Build.0 = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Debug|x86.Build.0 = Debug|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|x64.ActiveCfg = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|x64.Build.0 = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|x86.ActiveCfg = Release|Any CPU
-		{C55D4769-CDBA-4062-8366-EB28134888B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,7 +117,6 @@ Global
 		{7C0FDF26-D329-41E9-B142-746F3A5AA6ED} = {2999BE8A-2C03-4997-957A-66142629BCD5}
 		{FBF40740-BDA6-4E28-AE7C-D791D0F43A50} = {44ED8342-082C-465B-A52B-92E35CFFF5FF}
 		{AA7B4C3A-2008-40F3-B1F0-4EE748436520} = {2999BE8A-2C03-4997-957A-66142629BCD5}
-		{C55D4769-CDBA-4062-8366-EB28134888B0} = {2999BE8A-2C03-4997-957A-66142629BCD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {08492C5F-0B0F-4434-9AAF-5ED0298B15BF}

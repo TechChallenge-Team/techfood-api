@@ -11,7 +11,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Queries;
 
-internal class ProductQueryProvider(TechFoodContext techFoodContext, IImageUrlResolver imageUrl) : IProductQueryProvider
+internal class ProductQueryProvider(ApiTechFoodContext techFoodContext, IImageUrlResolver imageUrl) : IProductQueryProvider
 {
     public async Task<List<ProductDto>> GetAllAsync()
     {

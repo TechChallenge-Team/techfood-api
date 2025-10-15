@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TechFood.Application.Common.Resources;
@@ -6,6 +6,7 @@ using TechFood.Application.Customers.Dto;
 using TechFood.Domain.Enums;
 using TechFood.Domain.Repositories;
 using TechFood.Domain.ValueObjects;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Customers.Commands.CreateCustomer;
 
@@ -18,7 +19,7 @@ public class CreateCustomerCommandHandler(ICustomerRepository repo) : IRequestHa
         var cpfExists = await repo.GetByDocument(document.Type, document.Value);
         if (cpfExists != null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Customer_CpfAlreadyExists);
+            throw new ApplicationException(Exceptions.Customer_CpfAlreadyExists);
         }
 
         var customer = new Domain.Entities.Customer(

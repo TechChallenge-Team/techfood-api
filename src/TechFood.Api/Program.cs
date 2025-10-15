@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using TechFood.Application;
-using TechFood.Common.Extensions;
 using TechFood.Infra;
 using TechFood.Infra.Persistence.Contexts;
+using TechFood.Shared.Presentation.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -24,7 +24,7 @@ var app = builder.Build();
     //Run migrations
     using (var scope = app.Services.CreateScope())
     {
-        var dataContext = scope.ServiceProvider.GetRequiredService<TechFoodContext>();
+        var dataContext = scope.ServiceProvider.GetRequiredService<ApiTechFoodContext>();
         dataContext.Database.Migrate();
     }
 

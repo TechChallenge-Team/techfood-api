@@ -7,7 +7,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Repositories;
 
-public class PaymentRepository(TechFoodContext dbContext) : IPaymentRepository
+public class PaymentRepository(ApiTechFoodContext dbContext) : IPaymentRepository
 {
     private readonly DbSet<Payment> _payments = dbContext.Payments;
 

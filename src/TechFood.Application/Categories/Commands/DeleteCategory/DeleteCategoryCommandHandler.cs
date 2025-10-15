@@ -1,8 +1,9 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TechFood.Application.Common.Resources;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Categories.Commands.DeleteCategory;
 
@@ -13,7 +14,7 @@ public class DeleteCategoryCommandHandler(ICategoryRepository repo) : IRequestHa
         var category = await repo.GetByIdAsync(request.Id);
         if (category == null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Category_CategoryNotFound);
+            throw new ApplicationException(Exceptions.Category_CategoryNotFound);
         }
 
         await repo.DeleteAsync(category);

@@ -6,7 +6,7 @@ namespace TechFood.Infra
     {
         public static IApplicationBuilder UseInfra(this IApplicationBuilder app)
         {
-            app.UseMiddleware<EventualConsistency.Middleware>();
+            app.UseSharedInfra();
 
             return app;
         }

@@ -1,8 +1,9 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TechFood.Application.Common.Resources;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Payments.Commands.ConfirmPayment;
 
@@ -13,7 +14,7 @@ public class ConfirmPaymentCommandHandler(IPaymentRepository repo) : IRequestHan
         var payment = await repo.GetByIdAsync(request.Id);
         if (payment == null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Payment_PaymentNotFound);
+            throw new ApplicationException(Exceptions.Payment_PaymentNotFound);
         }
 
         payment.Confirm();

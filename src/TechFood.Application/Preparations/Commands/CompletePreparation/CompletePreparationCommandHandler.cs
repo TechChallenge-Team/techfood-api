@@ -1,8 +1,9 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using TechFood.Application.Common.Resources;
 using TechFood.Domain.Repositories;
+using TechFood.Shared.Application.Exceptions;
 
 namespace TechFood.Application.Preparations.Commands.CompletePreparation;
 
@@ -13,7 +14,7 @@ public class CompletePreparationCommandHandler(IPreparationRepository repo) : IR
         var preparation = await repo.GetByIdAsync(request.Id);
         if (preparation == null)
         {
-            throw new Common.Exceptions.ApplicationException(Exceptions.Preparation_PreparationNotFound);
+            throw new ApplicationException(Exceptions.Preparation_PreparationNotFound);
         }
 
         preparation.Ready();

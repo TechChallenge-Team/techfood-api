@@ -9,7 +9,7 @@ using TechFood.Infra.Persistence.Contexts;
 
 namespace TechFood.Infra.Persistence.Queries;
 
-internal class MenuQueryProvider(TechFoodContext techFoodContext, IImageUrlResolver imageUrl) : IMenuQueryProvider
+internal class MenuQueryProvider(ApiTechFoodContext techFoodContext, IImageUrlResolver imageUrl) : IMenuQueryProvider
 {
     public async Task<MenuDto> GetAsync()
     {
